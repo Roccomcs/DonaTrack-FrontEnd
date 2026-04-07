@@ -1,123 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Newsreader:opsz,wght@6..72,400;6..72,600&display=swap');
-
-:root {
-  --color-primary: #ef4444;
-  --color-primary-dark: #dc2626;
-  --color-primary-soft: #fff1ed;
-  --color-secondary: #f97316;
-  --color-ink: #171312;
-  --color-muted: #695f5b;
-  --color-bg: #fffaf5;
-  --color-card: #ffffff;
-  --color-border: #f0e2d8;
-  --container: 1120px;
-}
-
-* {
-  box-sizing: border-box;
-}
-
-body {
-  margin: 0;
-  font-family: 'Sora', 'Segoe UI', sans-serif;
-  color: var(--color-ink);
-  background:
-    radial-gradient(circle at 8% 15%, #ffe2d4 0, transparent 34%),
-    radial-gradient(circle at 95% 82%, #ffd8c7 0, transparent 28%),
-    var(--color-bg);
-}
-
-a {
-  color: inherit;
-  text-decoration: none;
-}
-
-.app-shell {
-  min-height: 100vh;
-}
-
-.container {
-  width: min(var(--container), calc(100% - 2.5rem));
-  margin: 0 auto;
-}
-
-.dt-header {
-  position: sticky;
-  top: 0;
-  z-index: 40;
-  backdrop-filter: blur(14px);
-  background: color-mix(in srgb, #fff8f2 82%, transparent);
-  border-bottom: 1px solid #f5dfd2;
-}
-
-.dt-header-row {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  min-height: 78px;
-  gap: 1rem;
-}
-
-.brand {
-  display: flex;
-  align-items: center;
-  gap: 0.6rem;
-  font-weight: 800;
-  font-size: 1.3rem;
-}
-
-.brand-mark {
-  width: 36px;
-  height: 36px;
-  display: grid;
-  place-items: center;
-  border-radius: 12px;
-  color: white;
-  background: linear-gradient(160deg, var(--color-primary), var(--color-secondary));
-  box-shadow: 0 10px 26px rgba(239, 68, 68, 0.28);
-}
-
-.dt-nav {
-  display: flex;
-  gap: 1.5rem;
-  color: var(--color-muted);
-  font-size: 0.95rem;
-}
-
-.dt-nav a:hover {
-  color: var(--color-primary-dark);
-}
-
-.auth-actions {
-  display: flex;
-  gap: 0.65rem;
-}
-
-.btn {
-  border: 1px solid transparent;
-  border-radius: 999px;
-  padding: 0.68rem 1.05rem;
-  font-weight: 600;
-  font-family: inherit;
-  cursor: pointer;
-  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
-}
-
-.btn:hover {
-  transform: translateY(-1px);
-}
-
-.btn-outline {
-  background: #fff;
-  border-color: #eed7ca;
-}
-
-.btn-primary {
-  color: white;
-  background: linear-gradient(120deg, var(--color-primary), var(--color-secondary));
-  box-shadow: 0 12px 28px rgba(239, 68, 68, 0.3);
-}
-
 .hero {
   padding: 5.4rem 0 4.5rem;
 }
@@ -388,10 +268,6 @@ a {
 }
 
 @media (max-width: 1024px) {
-  .dt-nav {
-    display: none;
-  }
-
   .hero-grid,
   .feature-grid,
   .donation-grid,
@@ -406,14 +282,6 @@ a {
 }
 
 @media (max-width: 740px) {
-  .container {
-    width: min(var(--container), calc(100% - 1.5rem));
-  }
-
-  .auth-actions {
-    display: none;
-  }
-
   .hero-grid,
   .feature-grid,
   .donation-grid,

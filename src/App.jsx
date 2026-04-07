@@ -1,13 +1,14 @@
 import { Navigate, Route, Routes } from 'react-router-dom'
-import { MainLayout } from './layouts/MainLayout.jsx'
 import { LandingPage } from './pages/LandingPage.jsx'
+import { DonationDetailPage } from './pages/DonationDetailPage.jsx'
+import { MapView } from './pages/MapView.jsx'
 
 function App() {
   return (
     <Routes>
-      <Route element={<MainLayout />}>
-        <Route path="/" element={<LandingPage />} />
-      </Route>
+      <Route path="/" element={<LandingPage />} />
+      <Route path="/explorar-donaciones" element={<MapView />} />
+      <Route path="/explorar-donaciones/:donationId" element={<DonationDetailPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   )

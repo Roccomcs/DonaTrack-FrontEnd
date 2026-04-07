@@ -1,144 +1,48 @@
-import {
-  ArrowRight,
-  Camera,
-  CheckCircle,
-  Heart,
-  Mail,
-  MapPin,
-  Phone,
-  Users,
-} from 'lucide-react'
+import { ArrowRight, Camera, CheckCircle, Heart, Mail, MapPin, Phone, Users } from 'lucide-react'
 import { createElement } from 'react'
-import { ImageWithFallback } from '../components/figma/ImageWithFallback.jsx'
-
-const featuredDonations = [
-  {
-    id: 1,
-    donorName: 'Maria Gonzalez',
-    item: 'Ropa de invierno',
-    date: '15 de marzo, 2026',
-    beneficiary: 'Centro Comunitario Norte',
-    image: 'https://images.unsplash.com/photo-1489987707025-afc232f7ea0f?w=400&h=300&fit=crop',
-  },
-  {
-    id: 2,
-    donorName: 'Carlos Ramirez',
-    item: 'Juguetes educativos',
-    date: '20 de marzo, 2026',
-    beneficiary: 'Escuela Primaria La Esperanza',
-    image: 'https://images.unsplash.com/photo-1515488042361-ee00e0ddd4e4?w=400&h=300&fit=crop',
-  },
-  {
-    id: 3,
-    donorName: 'Ana Lopez',
-    item: 'Alimentos no perecederos',
-    date: '28 de marzo, 2026',
-    beneficiary: 'Comedor Social San Jose',
-    image: 'https://images.unsplash.com/photo-1593113598332-cd288d649433?w=400&h=300&fit=crop',
-  },
-]
-
-const recentDeliveries = [
-  {
-    id: 1,
-    image: 'https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=300&h=300&fit=crop',
-    title: 'Entrega de utiles escolares',
-  },
-  {
-    id: 2,
-    image: 'https://images.unsplash.com/photo-1532629345422-7515f3d16bb6?w=300&h=300&fit=crop',
-    title: 'Distribucion de alimentos',
-  },
-  {
-    id: 3,
-    image: 'https://images.unsplash.com/photo-1488521787991-ed7bbaae773c?w=300&h=300&fit=crop',
-    title: 'Donacion de ropa',
-  },
-  {
-    id: 4,
-    image: 'https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?w=300&h=300&fit=crop',
-    title: 'Juguetes para ninos',
-  },
-]
-
-const features = [
-  {
-    title: 'Transparencia total',
-    description: 'Seguimiento en tiempo real de cada donacion con evidencia fotografica.',
-    icon: CheckCircle,
-  },
-  {
-    title: 'Conexion directa',
-    description: 'Donantes y beneficiarios conectan sin intermediarios innecesarios.',
-    icon: Users,
-  },
-  {
-    title: 'Verificacion fotografica',
-    description: 'Cada entrega queda documentada en una galeria publica y trazable.',
-    icon: Camera,
-  },
-]
+import { Link } from 'react-router-dom'
+import { TopNav } from '../components/TopNav.jsx'
+import {
+  featuredDonations,
+  footerLinks,
+  heroContent,
+  heroStats,
+  landingFeatures,
+  recentDeliveries,
+} from '../data/landing.js'
 
 export function LandingPage() {
   return (
     <>
-      <header className="dt-header">
-        <div className="container dt-header-row">
-          <a className="brand" href="#inicio">
-            <span className="brand-mark" aria-hidden="true">
-              <Heart size={20} />
-            </span>
-            DonaTrack
-          </a>
-          <nav className="dt-nav" aria-label="Navegacion principal">
-            <a href="#about">Acerca de</a>
-            <a href="#donations">Donaciones</a>
-            <a href="#gallery">Galeria</a>
-            <a href="#contact">Contacto</a>
-          </nav>
-          <div className="auth-actions">
-            <button type="button" className="btn btn-outline">Iniciar sesion</button>
-            <button type="button" className="btn btn-primary">Registrarse</button>
-          </div>
-        </div>
-      </header>
+      <TopNav />
 
       <main id="inicio">
         <section className="hero">
           <div className="container hero-grid">
             <div>
-              <span className="kicker">Donaciones transparentes y verificables</span>
-              <h1>Cada ayuda cuenta, y cada entrega se puede comprobar.</h1>
-              <p>
-                DonaTrack conecta personas que donan con quienes necesitan apoyo,
-                mostrando evidencia real de cada donacion mediante fotos publicas.
-              </p>
+              <span className="kicker">{heroContent.kicker}</span>
+              <h1>{heroContent.title}</h1>
+              <p>{heroContent.description}</p>
               <div className="hero-actions">
                 <button type="button" className="btn btn-primary">
                   Empezar a donar
                 </button>
-                <button type="button" className="btn btn-outline">
-                  Ver como funciona <ArrowRight size={16} />
-                </button>
+                <Link to="/explorar-donaciones" className="btn btn-outline hero-link-button">
+                  {heroContent.ctaLabel} <ArrowRight size={16} />
+                </Link>
               </div>
               <div className="stats" aria-label="Estadisticas destacadas">
-                <div className="stat">
-                  <strong>2,847</strong>
-                  <span>donaciones verificadas</span>
-                </div>
-                <div className="stat">
-                  <strong>1,234</strong>
-                  <span>familias impactadas</span>
-                </div>
-                <div className="stat">
-                  <strong>98%</strong>
-                  <span>satisfaccion reportada</span>
-                </div>
+                {heroStats.map((stat) => (
+                  <div key={stat.label} className="stat">
+                    <strong>{stat.value}</strong>
+                    <span>{stat.label}</span>
+                  </div>
+                ))}
               </div>
             </div>
             <div className="hero-visual">
-              <ImageWithFallback
-                src="https://images.unsplash.com/photo-1593113598332-cd288d649433?w=900&h=700&fit=crop"
+              <img
+                src={heroContent.heroImage}
                 alt="Voluntarios preparando donaciones"
               />
             </div>
@@ -152,7 +56,7 @@ export function LandingPage() {
               Hacemos que la solidaridad sea medible y visible para fortalecer la confianza.
             </p>
             <div className="feature-grid">
-              {features.map((feature) => (
+              {landingFeatures.map((feature) => (
                 <article key={feature.title} className="feature-card">
                   <div className="feature-icon" aria-hidden="true">
                     {createElement(feature.icon, { size: 20 })}
@@ -172,7 +76,7 @@ export function LandingPage() {
             <div className="donation-grid">
               {featuredDonations.map((donation) => (
                 <article key={donation.id} className="donation-card">
-                  <ImageWithFallback src={donation.image} alt={donation.item} />
+                  <img src={donation.image} alt={donation.item} />
                   <h3>{donation.item}</h3>
                   <p>
                     <strong>Donante:</strong> {donation.donorName}
@@ -195,7 +99,7 @@ export function LandingPage() {
             <div className="gallery-grid">
               {recentDeliveries.map((item) => (
                 <figure key={item.id} className="gallery-item">
-                  <ImageWithFallback src={item.image} alt={item.title} />
+                  <img src={item.image} alt={item.title} />
                   <figcaption>{item.title}</figcaption>
                 </figure>
               ))}
@@ -240,18 +144,18 @@ export function LandingPage() {
             <div>
               <h4>Enlaces rapidos</h4>
               <ul>
-                <li><a href="#about">Acerca de</a></li>
-                <li><a href="#donations">Donaciones</a></li>
-                <li><a href="#gallery">Galeria</a></li>
+                {footerLinks.quickLinks.map((link) => (
+                  <li key={link.label}><a href={link.href}>{link.label}</a></li>
+                ))}
               </ul>
             </div>
 
             <div>
               <h4>Acceso</h4>
               <ul>
-                <li><a href="#">Iniciar sesion</a></li>
-                <li><a href="#">Registro donantes</a></li>
-                <li><a href="#">Registro beneficiarios</a></li>
+                {footerLinks.accessLinks.map((link) => (
+                  <li key={link.label}><a href={link.href}>{link.label}</a></li>
+                ))}
               </ul>
             </div>
 
@@ -266,9 +170,9 @@ export function LandingPage() {
           </div>
 
           <div className="legal">
-            <a href="#">Terminos de servicio</a>
-            <a href="#">Politica de privacidad</a>
-            <a href="#">Aviso legal</a>
+            {footerLinks.legalLinks.map((link) => (
+              <a key={link.label} href={link.href}>{link.label}</a>
+            ))}
           </div>
         </div>
       </footer>
