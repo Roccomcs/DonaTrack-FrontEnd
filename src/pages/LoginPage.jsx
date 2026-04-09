@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useNavigate, Link } from 'react-router-dom'
 import { Heart, Mail, Lock } from 'lucide-react'
-import { useAuth } from '../context/AuthContext'
+import { useAuth } from '../context/useAuth'
 import { testDonors, testBeneficiaries, testAdmins } from '../data/auth-users'
 import '../styles/registration.css'
 
@@ -64,15 +64,15 @@ export function LoginPage() {
       const admin = testAdmins.find(a => a.email === formData.email && a.password === formData.password)
 
       if (donor) {
-        const { password, ...userWithoutPassword } = donor
+        const { password: _PASSWORD, ...userWithoutPassword } = donor
         login(userWithoutPassword)
         navigate('/donante/dashboard')
       } else if (beneficiary) {
-        const { password, ...userWithoutPassword } = beneficiary
+        const { password: _PASSWORD, ...userWithoutPassword } = beneficiary
         login(userWithoutPassword)
         navigate('/entidad/dashboard')
       } else if (admin) {
-        const { password, ...userWithoutPassword } = admin
+        const { password: _PASSWORD, ...userWithoutPassword } = admin
         login(userWithoutPassword)
         navigate('/admin/dashboard')
       } else {
