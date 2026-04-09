@@ -1,4 +1,4 @@
-export const generateUserNotifications = (userId) => [
+export const generateUserNotifications = () => [
   {
     id: 'notif-1',
     type: 'donation_assigned',

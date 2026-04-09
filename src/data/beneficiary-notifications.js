@@ -1,4 +1,4 @@
-export const generateBeneficiaryNotifications = (entityId) => [
+export const generateBeneficiaryNotifications = () => [
   {
     id: 'notif-1',
     type: 'donation_assigned',

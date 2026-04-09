@@ -28,6 +28,16 @@
   box-shadow: 0 12px 28px rgba(239, 68, 68, 0.3);
 }
 
+.btn-ghost-primary {
+  background: transparent;
+  color: #667eea;
+  border-color: #667eea;
+}
+
+.btn-ghost-primary:hover {
+  background: rgba(102, 126, 234, 0.08);
+}
+
 .hero-link-button {
   min-height: 47px;
 }
@@ -83,6 +93,10 @@
 .auth-actions {
   display: flex;
   gap: 0.65rem;
+}
+
+.nav-auth-link {
+  text-decoration: none;
 }
 
 @media (max-width: 1024px) {

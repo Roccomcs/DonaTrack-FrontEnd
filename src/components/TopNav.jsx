@@ -20,22 +20,12 @@ export function TopNav() {
         </nav>
 
         <div className="auth-actions">
-          <NavLink to="/login" style={{ textDecoration: 'none' }}>
-            <button type="button" style={{ 
-              background: 'transparent', 
-              color: '#667eea',
-              border: '1px solid #667eea',
-              padding: '0.68rem 1.05rem',
-              borderRadius: '999px',
-              fontWeight: '600',
-              cursor: 'pointer',
-              transition: 'all 160ms ease',
-              marginRight: '0.5rem'
-            }}>
+          <NavLink to="/login" className="nav-auth-link">
+            <button type="button" className="btn btn-ghost-primary">
               Iniciar sesión
             </button>
           </NavLink>
-          <NavLink to="/registro" style={{ textDecoration: 'none' }}>
+          <NavLink to="/registro" className="nav-auth-link">
             <button type="button" className="btn btn-primary">Registrarse</button>
           </NavLink>
         </div>
