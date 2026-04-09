@@ -1,96 +1,109 @@
 # DonaTrack
 
-DonaTrack es una interfaz web para visualizar y seguir donaciones con foco en transparencia e impacto social. La aplicación combina una landing informativa, un mapa interactivo y una vista de detalle para explorar entregas, beneficiarios y trazabilidad de cada donación.
+Frontend MVP para gestionar donaciones entre donantes, entidades beneficiarias y administradores.
+Incluye landing pública, mapa de donaciones y 3 dashboards por rol.
 
-## Badges
+## Caracteristicas
 
-El proyecto no tiene CI o publicación automática configurada todavía, así que no hay badges de build o versión enlazados en este momento. Si más adelante se agrega GitHub Actions o un flujo de despliegue, esta sección puede incluir badges de estado.
+- Stack: React 19 + React Router 7 + Vite + Leaflet.
+- Estado actual: app 100% frontend con datos mock en src/data.
+- Autenticación: simulada con Context + localStorage.
+- Dashboards disponibles: donante, entidad beneficiaria, administrador.
 
-## Demo y capturas
+## Quick Start
 
-No hay una versión pública desplegada ni capturas versionadas en el repositorio por ahora. Para probar la app localmente, ejecútala con Vite y abre la ruta principal en el navegador.
+Requisitos recomendados:
 
-Rutas principales:
+- Node.js 18+
+- npm 9+
 
-- `/` para la landing page.
-- `/explorar-donaciones` para el mapa interactivo.
-- `/explorar-donaciones/:donationId` para el detalle de una donación.
+Instalación y ejecución:
 
-## Tecnologías
+```bash
+npm install
+npm run dev
+```
 
-- React 19
-- React Router DOM 7
-- React Leaflet 5
-- Leaflet
-- Lucide React
-- Vite
+Scripts útiles:
 
-## Requisitos Previos
+```bash
+npm run lint
+npm run build
+npm run preview
+```
 
-- Node.js 18 o superior
-- npm 9 o superior
-- Git para clonar el repositorio
+## Rutas Clave
 
-## Instalación
+Públicas:
 
-1. Clona el repositorio:
+- / (landing)
+- /explorar-donaciones (mapa)
+- /explorar-donaciones/:donationId (detalle)
+- /registro y subrutas de registro
+- /login
 
-   git clone <URL_DEL_REPOSITORIO>
-   cd frontDonaTrack
+Protegidas por rol:
 
-2. Instala las dependencias:
+- /donante/dashboard (role donor)
+- /entidad/dashboard (role beneficiary)
+- /admin/dashboard (role admin)
 
-   npm install
+## Credenciales De Prueba
 
-3. Inicia el servidor de desarrollo:
+Donante:
 
-   npm run dev
+- juan@example.com / 123456
+- maria@example.com / 123456
 
-4. Abre la URL que aparece en la terminal, normalmente http://localhost:5173.
+Entidad beneficiaria:
 
-## Uso
+- info@fundaciondespierta.org / 123456
+- contacto@redsolitaria.org / 123456
 
-### Ejecutar en desarrollo
+Administrador:
 
-Inicia la app con:
+- admin@donatrack.com / admin123
 
-	npm run dev
+## Qué Puede Hacer Cada Rol
 
-Luego navega por estas vistas:
+Donante:
 
-- La landing muestra la propuesta de valor, estadísticas y donaciones destacadas.
-- El mapa permite explorar donaciones geolocalizadas y abrir el detalle de cada una.
-- La vista de detalle muestra entidad beneficiaria, ubicación, fecha, artículos y resumen de impacto.
+- Ver y filtrar sus donaciones
+- Explorar entidades beneficiarias
+- Consultar incentivos, misiones e insignias
+- Revisar notificaciones
+- Seguir entregas activas (vista simulada)
 
-### Verificar calidad
+Entidad beneficiaria:
 
-Ejecuta lint antes de enviar cambios:
+- Registrar necesidades
+- Ver donaciones asignadas
+- Confirmar recepción de entregas
+- Revisar entregas y notificaciones
 
-	npm run lint
+Administrador:
 
-### Generar build de producción
+- Gestionar donantes
+- Gestionar donaciones pendientes
+- Asignar donaciones a beneficiarios
+- Gestionar camiones
+- Ver rankings
+- Importar donantes vía CSV (simulado)
 
-Compila la aplicación con:
+## Arquitectura
 
-	npm run build
+- src/main.jsx: Bootstrap de app, Router y AuthProvider.
+- src/App.jsx: Definición de rutas públicas/protegidas.
+- src/context/: auth context + hook useAuth.
+- src/pages/: páginas principales (landing, login, dashboards).
+- src/components/: módulos por dominio (admin, donor, beneficiary, map).
+- src/data/: fuente de datos mock.
+- src/styles/: CSS por base/layout/componentes/páginas.
 
-### Previsualizar el build
+## Limitaciones Actuales
 
-Sirve la versión compilada localmente con:
-
-	npm run preview
-
-## Estructura general
-
-- src/App.jsx: definición de rutas.
-- src/pages/LandingPage.jsx: página de inicio.
-- src/pages/MapView.jsx: mapa interactivo de donaciones.
-- src/pages/DonationDetailPage.jsx: detalle individual de una donación.
-- src/components/: componentes reutilizables de navegación y mapa.
-- src/data/: datos de contenido y donaciones de ejemplo.
-- src/styles/: estilos base, layout, componentes y páginas.
-
-## Notas
-
-- El mapa depende de los estilos de Leaflet para renderizar correctamente.
-- El proyecto ya pasa npm run lint de forma local.
+- Sin backend real ni base de datos.
+- Login y autorización simulados en cliente.
+- Persistencia solo en localStorage para sesión.
+- Registros e importación CSV simulados (sin API real).
+- Parte del tracking de entregas en dashboard de donante usa mapa placeholder.
