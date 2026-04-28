@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { MapPin, TrendingUp, Clock, Phone } from 'lucide-react'
-import { InteractiveMap } from '../components/map/InteractiveMap.jsx'
-import { activeDeliveries } from '../data/deliveries'
-import { donations as allDonations } from '../data/donations.js'
+import { InteractiveMap } from '../map/InteractiveMap.jsx'
+import { activeDeliveries } from '../../data/deliveries'
+import { donations as allDonations } from '../../data/donations.js'
 import '../../styles/pages/active-deliveries.css'
 
 export function ActiveDeliveries() {
